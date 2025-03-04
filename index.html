@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clipboard Grammar Correction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 flex flex-col items-center justify-center min-h-screen p-4">
+<h1 class="text-2xl font-bold mb-4">Clipboard Grammar Correction</h1>
+
+<div class="bg-white p-4 rounded-lg shadow-md w-full max-w-lg">
+    <h3 class="text-lg font-semibold text-gray-700">Original Clipboard Text:</h3>
+    <p id="clipboard-text" class="text-gray-600 p-2 bg-gray-200 rounded-md mt-2">Waiting for clipboard input...</p>
+</div>
+
+<div id="progress" class="mt-4 hidden">
+    <p class="text-blue-600">Processing...</p>
+    <div class="w-full bg-gray-300 h-2 rounded-md overflow-hidden mt-1">
+        <div class="bg-blue-500 h-2 animate-pulse"></div>
+    </div>
+</div>
+
+<div class="bg-white p-4 rounded-lg shadow-md w-full max-w-lg mt-4">
+    <h3 class="text-lg font-semibold text-gray-700">Corrected Text:</h3>
+    <p id="corrected-text" class="text-gray-600 p-2 bg-green-200 rounded-md mt-2">No corrections yet.</p>
+
+    <!-- Copy to Clipboard Button -->
+    <button id="copy-btn" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+        Copy to Clipboard
+    </button>
+
+    <!-- Success Message (Hidden by Default) -->
+    <p id="copy-success" class="text-green-600 text-sm mt-2 hidden">Copied to clipboard! ✅</p>
+</div>
+
+<script src="./renderer.js"></script>
+</body>
+</html>
