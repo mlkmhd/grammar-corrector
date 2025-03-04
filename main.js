@@ -1,4 +1,5 @@
 const { app, BrowserWindow, clipboard, ipcMain } = require('electron');
+const path = require('path');
 
 let win;
 
@@ -6,6 +7,7 @@ const createWindow = () => {
   win = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: path.join(__dirname, 'assets/icon.png'),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -43,10 +45,11 @@ ipcMain.handle('get-clipboard-text', () => {
 
 
 let lastText = '';
+let lastCorrectedText = '';
 
 setInterval(() => {
   const currentClipboardText = clipboard.readText();
-  if (currentClipboardText && currentClipboardText !== lastText) {
+  if (currentClipboardText && currentClipboardText !== lastText && currentClipboardText !== lastCorrectedText) {
     lastText = currentClipboardText;
 
     if (win) {
@@ -58,6 +61,7 @@ setInterval(() => {
       if (win) {
         win.webContents.send('update-text', correctedText);
         win.webContents.send('update-progress', false);
+        lastCorrectedText = correctedText;
       }
     }).catch(error => {
       console.error("Grammar correction failed:", error);

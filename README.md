@@ -13,5 +13,5 @@ This application will automatically watch your clipboard and provide a correct v
 
 ## Screenshots
 <p align="center">
-  <img src="screenshots/homepage.png?raw=true" />
+  <img src="assets/homepage-screenshot.png?raw=true" />
 </p>
