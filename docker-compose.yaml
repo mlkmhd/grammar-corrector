@@ -5,14 +5,11 @@ services:
     container_name: ollama
     restart: always
     ports:
-      - "11435:11434"
+      - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
-    entrypoint: ["/bin/sh", "-c"]
-    command:
-      - |
-        ollama pull llama3:8b
-        ollama serve
+      - ./start.sh:/app/start.sh
+    entrypoint: ["/bin/bash", "/app/start.sh"]
 
 volumes:
   ollama_data:
