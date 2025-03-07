@@ -8,8 +8,14 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
-      - ./start.sh:/app/start.sh
-    entrypoint: ["/bin/bash", "/app/start.sh"]
+
+  ollama-pull:
+    image: ollama/ollama
+    environment:
+      - OLLAMA_HOST="ollama:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    command: "pull llama3.2:latest"
 
 volumes:
   ollama_data:
